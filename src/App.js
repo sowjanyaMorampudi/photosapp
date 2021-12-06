@@ -7,7 +7,6 @@ import "./App.css";
 const App = () => {
   return (
     <Router>
-      <h1>hii</h1>
       <NavbarCom />
 
       <Routes>
