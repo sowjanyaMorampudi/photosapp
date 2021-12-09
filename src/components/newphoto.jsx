@@ -11,6 +11,7 @@ const Newphoto = ({ buttonClick }) => {
 
   const changeHandler = (e) => {
     setNewData({ ...newData, [e.target.name]: e.target.value });
+    // console.log(newData);
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -46,7 +47,6 @@ const Newphoto = ({ buttonClick }) => {
               type="text"
               placeholder="title"
               name="title"
-              value={title}
               onChange={changeHandler}
             />
             <br />
@@ -54,7 +54,6 @@ const Newphoto = ({ buttonClick }) => {
               type="text"
               placeholder="url"
               name="url"
-              value={url}
               onChange={changeHandler}
             />
             <br />
@@ -62,7 +61,6 @@ const Newphoto = ({ buttonClick }) => {
               type="text"
               placeholder="thumbnailUrl"
               name="thumbnailUrl"
-              value={thumbnailUrl}
               onChange={changeHandler}
             />
             <br />

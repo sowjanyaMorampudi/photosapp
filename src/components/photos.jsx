@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import useFetch from "./usefetch";
 import {
   CardGroup,
   //   PaginationItem,
@@ -13,22 +14,26 @@ import Newphoto from "./newphoto";
 import { useParams } from "react-router";
 
 const Photos = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   // const [perpage, setPerpage] = useState(1);
-  const [load, setLoad] = useState(true);
+  // const [load, setLoad] = useState(true);
   const [modelDetail, setModelDetail] = useState(false);
   const [imageData, setImageData] = useState(null);
   const [newButton, setNewButton] = useState(false);
   const { id } = useParams();
-  useEffect(() => {
-    setLoad(true);
-    fetch(`https://jsonplaceholder.typicode.com/albums/${id}/photos`)
-      .then((response) => response.json())
-      .then((json) => {
-        setLoad(false);
-        setData(json);
-      });
-  }, [id]);
+  // useEffect(() => {
+  //   setLoad(true);
+
+  //   // fetch(`https://jsonplaceholder.typicode.com/albums/${id}/photos`)
+  //   //   .then((response) => response.json())
+  //   //   .then((json) => {
+  //   setLoad(false);
+  //   // setData(json);
+  //   // });
+  // }, [id]);
+  const data = useFetch(
+    `https://jsonplaceholder.typicode.com/albums/${id}/photos`
+  );
 
   const modeOn = (data) => {
     setModelDetail(true);
@@ -55,7 +60,8 @@ const Photos = () => {
       {newButton && <Newphoto buttonClick={buttonClick} />}
       {modelDetail && <Image data={imageData} previewClose={previewClose} />}
       <CardGroup>
-        {!load ? (
+        {/* {!load ? ( */}
+        {data ? (
           data.map((item) => (
             <Photo key={item.id} item={item} modeOn={modeOn} />
           ))

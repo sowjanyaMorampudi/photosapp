@@ -1,4 +1,5 @@
 import { Card, CardBody, CardImg, CardTitle, Col } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const Photo = ({ item, modeOn }) => {
   const { url, title } = item;
@@ -12,6 +13,7 @@ const Photo = ({ item, modeOn }) => {
           }}
           alt={item.title}
         />
+
         <CardBody>
           <CardTitle>
             {item.id}:{item.title}
